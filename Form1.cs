@@ -315,7 +315,7 @@ namespace DXFSplitIntoParts
 
                 Vector3 ExtMin = new Vector3();
                 Vector3 ExtMax = new Vector3();
-                MathHelper.EntitiesExtension(dxfControl.DXF.Entities, out ExtMin, out ExtMax);
+                MathHelper.EntitiesExtensions(dxfControl.DXF.Entities, out ExtMin, out ExtMax);
 
 
                 dxfControl.ZoomWindow(ExtMin.ToVector2(), ExtMax.ToVector2());
