@@ -359,11 +359,50 @@ namespace DXFSplitIntoParts
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel1.Text = "";
             int tIndex = tabControl1.SelectedIndex;
             if (tIndex > 0)
             {
 
                 ((DXFReaderNETControl)tabControl1.TabPages[tIndex].Controls[0]).ZoomCenter();
+
+                this.Cursor = Cursors.WaitCursor;
+
+                int InternalCountoursNumber = 0;
+                double ExternalLenght = 0;
+                double ExternalArea = 0;
+                double InternalLenght = 0;
+                double InternalArea = 0;
+                List<EntityObject> entities = ((DXFReaderNETControl)tabControl1.TabPages[tIndex].Controls[0]).DXF.Entities.ToList();
+                bool ret = MathHelper.FindClosedAreaData(entities, out ExternalLenght, out ExternalArea, out InternalLenght, out InternalArea, out InternalCountoursNumber);
+
+                if (ret)
+                {
+
+                    toolStripStatusLabel1.Text = "Ext. lenght: " + dxfReaderNETControl1.DXF.ToFormattedUnit(ExternalLenght);
+                    toolStripStatusLabel1.Text += " Ext. area: " + dxfReaderNETControl1.DXF.ToFormattedUnit(ExternalArea);
+                    toolStripStatusLabel1.Text += " Int. lenght: " + dxfReaderNETControl1.DXF.ToFormattedUnit(InternalLenght);
+                    toolStripStatusLabel1.Text += " Int. area: " + dxfReaderNETControl1.DXF.ToFormattedUnit(InternalArea);
+                    toolStripStatusLabel1.Text += " Filled area: " + dxfReaderNETControl1.DXF.ToFormattedUnit(ExternalArea - InternalArea);
+                    toolStripStatusLabel1.Text += " Int. contours #: " + InternalCountoursNumber.ToString();
+
+
+
+                    Vector3 ExtMin = new Vector3();
+                    Vector3 ExtMax = new Vector3();
+                    MathHelper.EntitiesExtensions(entities, out ExtMin, out ExtMax);
+                    Vector2 extension = new Vector2(ExtMax.X - ExtMin.X, ExtMax.Y - ExtMin.Y);
+                    toolStripStatusLabel1.Text += " Extension: " + dxfReaderNETControl1.DXF.ToFormattedUnit(extension.X) + " x " + dxfReaderNETControl1.DXF.ToFormattedUnit(extension.Y);
+
+                }
+
+                else
+                {
+                    toolStripStatusLabel1.Text = "Single closed area not found";
+                }
+                this.Cursor = Cursors.Default;
+
+
             }
 
         }
