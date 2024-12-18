@@ -52,8 +52,9 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dxfReaderNETControl1 = new DXFReaderNET.DXFReaderNETControl();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.drawingInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dxfReaderNETControl1 = new DXFReaderNET.DXFReaderNETControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -94,50 +95,50 @@
             // newDrawingToolStripMenuItem
             // 
             this.newDrawingToolStripMenuItem.Name = "newDrawingToolStripMenuItem";
-            this.newDrawingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newDrawingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newDrawingToolStripMenuItem.Text = "New drawing";
             this.newDrawingToolStripMenuItem.Click += new System.EventHandler(this.newDrawingToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // loadDXFFileToolStripMenuItem
             // 
             this.loadDXFFileToolStripMenuItem.Name = "loadDXFFileToolStripMenuItem";
-            this.loadDXFFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadDXFFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loadDXFFileToolStripMenuItem.Text = "Load DXF file...";
             this.loadDXFFileToolStripMenuItem.Click += new System.EventHandler(this.loadDXFFileToolStripMenuItem_Click);
             // 
             // saveDXFFileToolStripMenuItem
             // 
             this.saveDXFFileToolStripMenuItem.Name = "saveDXFFileToolStripMenuItem";
-            this.saveDXFFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveDXFFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveDXFFileToolStripMenuItem.Text = "Save DXF file...";
             this.saveDXFFileToolStripMenuItem.Click += new System.EventHandler(this.saveDXFFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // saveAllPartsToolStripMenuItem
             // 
             this.saveAllPartsToolStripMenuItem.Name = "saveAllPartsToolStripMenuItem";
-            this.saveAllPartsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAllPartsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAllPartsToolStripMenuItem.Text = "Save all parts...";
             this.saveAllPartsToolStripMenuItem.Click += new System.EventHandler(this.saveAllPartsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -152,13 +153,14 @@
             // splitIntoPartsToolStripMenuItem
             // 
             this.splitIntoPartsToolStripMenuItem.Name = "splitIntoPartsToolStripMenuItem";
-            this.splitIntoPartsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.splitIntoPartsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.splitIntoPartsToolStripMenuItem.Text = "Split into parts";
             this.splitIntoPartsToolStripMenuItem.Click += new System.EventHandler(this.splitIntoPartsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.drawingInfoToolStripMenuItem,
             this.aboutDXFReaderNETComponentToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
@@ -195,6 +197,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(352, 305);
             this.tabControl1.TabIndex = 11;
+            this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
             // tabPage1
             // 
@@ -207,11 +210,19 @@
             this.tabPage1.Text = "Drawing";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // drawingInfoToolStripMenuItem
+            // 
+            this.drawingInfoToolStripMenuItem.Name = "drawingInfoToolStripMenuItem";
+            this.drawingInfoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.drawingInfoToolStripMenuItem.Text = "Drawing info...";
+            this.drawingInfoToolStripMenuItem.Click += new System.EventHandler(this.drawingInfoToolStripMenuItem_Click);
+            // 
             // dxfReaderNETControl1
             // 
             this.dxfReaderNETControl1.AutoSize = true;
             this.dxfReaderNETControl1.ContinuousHighlight = false;
             this.dxfReaderNETControl1.CustomCursor = DXFReaderNET.CustomCursorType.None;
+            this.dxfReaderNETControl1.CustomCursorColor = System.Drawing.Color.White;
             this.dxfReaderNETControl1.DistributionCode = "";
             dxfDocument1.ActiveLayout = "Model";
             dxfDocument1.Comments = null;
@@ -308,6 +319,7 @@
         private DXFReaderNET.DXFReaderNETControl dxfReaderNETControl1;
         private System.Windows.Forms.ToolStripMenuItem saveAllPartsToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.ToolStripMenuItem drawingInfoToolStripMenuItem;
     }
 }
 

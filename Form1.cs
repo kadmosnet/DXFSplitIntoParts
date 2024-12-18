@@ -27,7 +27,7 @@ namespace DXFSplitIntoParts
         private FunctionsEnum CurrentFunction = FunctionsEnum.None;
         private Vector2 p1 = Vector2.Zero;
         private Vector2 p2 = Vector2.Zero;
-        private const string ProgramName = "DXFSplitIntoParts"; // to be changed!!
+        private const string ProgramName = "DXFSplitIntoParts";
         private string CurrentLoadDXFPath = Application.StartupPath;
         private string CurrentSaveDXFPath = Application.StartupPath;
         public Form1()
@@ -69,6 +69,7 @@ namespace DXFSplitIntoParts
                 ResetTab();
                 dxfReaderNETControl1.ReadDXF(openFileDialog1.FileName);
                 tabPage1.Text = Path.GetFileName(openFileDialog1.FileName);
+                dxfReaderNETControl1.NormalizeEntities(dxfReaderNETControl1.DXF.Entities);
                 dxfReaderNETControl1.ZoomCenter();
             }
         }
@@ -331,7 +332,7 @@ namespace DXFSplitIntoParts
         }
         private void saveAllPartsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
 
             folderBrowserDialog1.SelectedPath = CurrentSaveDXFPath;
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
@@ -339,9 +340,30 @@ namespace DXFSplitIntoParts
                 CurrentSaveDXFPath = folderBrowserDialog1.SelectedPath;
                 for (int k = 1; k < tabControl1.TabPages.Count; k++)
                 {
-                    string dxfFileName = folderBrowserDialog1.SelectedPath + "\\" + Path.GetFileName(dxfReaderNETControl1.FileName).ToLower().Replace(".dxf", tabControl1.TabPages[k].Text + ".dxf");
+                    string dxfFileName = folderBrowserDialog1.SelectedPath + "\\" + Path.GetFileName(dxfReaderNETControl1.FileName).ToLower().Replace(".dxf", "_" + tabControl1.TabPages[k].Text + ".dxf");
                     ((DXFReaderNETControl)tabControl1.TabPages[k].Controls[0]).WriteDXF(dxfFileName);
                 }
+            }
+
+        }
+
+        private void drawingInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            int tIndex = tabControl1.SelectedIndex;
+
+
+            ((DXFReaderNETControl)tabControl1.TabPages[tIndex].Controls[0]).ShowDrawingInfo();
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            int tIndex = tabControl1.SelectedIndex;
+            if (tIndex > 0)
+            {
+
+                ((DXFReaderNETControl)tabControl1.TabPages[tIndex].Controls[0]).ZoomCenter();
             }
 
         }
