@@ -142,7 +142,7 @@ namespace DXFSplitIntoParts
             dxfReaderNETControl1.HighlightEntityOnHover = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightEntityOnHover", false).ToString());
             dxfReaderNETControl1.ContinuousHighlight = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "ContinuousHighlight", false).ToString());
             dxfReaderNETControl1.HighlightNotContinuous = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightNotContinuous", false).ToString());
-            dxfReaderNETControl1.HighlightGrabPoints = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightGrabPoints", false).ToString());
+            dxfReaderNETControl1.HighlightGrabPointsOnHover = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightGrabPointsOnHover", false).ToString());
 
             dxfReaderNETControl1.ShowAxes = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "ShowAxes", false).ToString());
             dxfReaderNETControl1.ShowBasePoint = Convert.ToBoolean(Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "ShowBasePoint", false).ToString());
@@ -173,7 +173,7 @@ namespace DXFSplitIntoParts
 
             dxfReaderNETControl1.GridDisplay = (GridDisplayType)Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "GridDisplay", 0);
 
-            dxfReaderNETControl1.PlotRotation = (PlotOrientationType)Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotRotation", 0);
+            dxfReaderNETControl1.PlotOrientation = (PlotOrientationType)Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotOrientation", 0);
             dxfReaderNETControl1.PlotRendering = (PlotRenderingType)Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotRendering", 0);
             dxfReaderNETControl1.PlotMode = (PlotModeType)Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotMode", 0);
             dxfReaderNETControl1.PlotUnits = (PlotUnitsType)Registry.GetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotUnits", 0);
@@ -221,7 +221,7 @@ namespace DXFSplitIntoParts
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightEntityOnHover", dxfReaderNETControl1.HighlightEntityOnHover);
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "ContinuousHighlight", dxfReaderNETControl1.ContinuousHighlight);
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightNotContinuous", dxfReaderNETControl1.HighlightNotContinuous);
-            Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightGrabPoints", dxfReaderNETControl1.HighlightGrabPoints);
+            Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "HighlightGrabPointsOnHover", dxfReaderNETControl1.HighlightGrabPointsOnHover);
 
 
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "ShowAxes", dxfReaderNETControl1.ShowAxes);
@@ -257,7 +257,7 @@ namespace DXFSplitIntoParts
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "mWindowState", this.WindowState);
 
 
-            Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotRotation", System.Convert.ToInt32(dxfReaderNETControl1.PlotRotation));
+            Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotOrientation", System.Convert.ToInt32(dxfReaderNETControl1.PlotOrientation));
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotRendering", System.Convert.ToInt32(dxfReaderNETControl1.PlotRendering));
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotMode", System.Convert.ToInt32(dxfReaderNETControl1.PlotMode));
             Registry.SetValue(@"HKEY_CURRENT_USER\Software\" + ProgramName, "PlotUnits", System.Convert.ToInt32(dxfReaderNETControl1.PlotUnits));
@@ -386,8 +386,6 @@ namespace DXFSplitIntoParts
                     toolStripStatusLabel1.Text += " Filled area: " + dxfReaderNETControl1.DXF.ToFormattedUnit(ExternalArea - InternalArea);
                     toolStripStatusLabel1.Text += " Int. contours #: " + InternalCountoursNumber.ToString();
 
-
-
                     Vector3 ExtMin = new Vector3();
                     Vector3 ExtMax = new Vector3();
                     MathHelper.EntitiesExtensions(entities, out ExtMin, out ExtMax);
@@ -404,8 +402,8 @@ namespace DXFSplitIntoParts
 
 
             }
-
         }
     }
+
 }
 

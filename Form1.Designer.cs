@@ -47,14 +47,14 @@
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitIntoPartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawingInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutDXFReaderNETComponentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.drawingInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dxfReaderNETControl1 = new DXFReaderNET.DXFReaderNETControl();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -166,10 +166,17 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
             this.toolStripMenuItem1.Text = "?";
             // 
+            // drawingInfoToolStripMenuItem
+            // 
+            this.drawingInfoToolStripMenuItem.Name = "drawingInfoToolStripMenuItem";
+            this.drawingInfoToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.drawingInfoToolStripMenuItem.Text = "Drawing info...";
+            this.drawingInfoToolStripMenuItem.Click += new System.EventHandler(this.drawingInfoToolStripMenuItem_Click);
+            // 
             // aboutDXFReaderNETComponentToolStripMenuItem
             // 
             this.aboutDXFReaderNETComponentToolStripMenuItem.Name = "aboutDXFReaderNETComponentToolStripMenuItem";
-            this.aboutDXFReaderNETComponentToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.aboutDXFReaderNETComponentToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.aboutDXFReaderNETComponentToolStripMenuItem.Text = "About DXFReader.NET Component...";
             this.aboutDXFReaderNETComponentToolStripMenuItem.Click += new System.EventHandler(this.aboutDXFReaderNETComponentToolStripMenuItem_Click);
             // 
@@ -210,13 +217,6 @@
             this.tabPage1.Text = "Drawing";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // drawingInfoToolStripMenuItem
-            // 
-            this.drawingInfoToolStripMenuItem.Name = "drawingInfoToolStripMenuItem";
-            this.drawingInfoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.drawingInfoToolStripMenuItem.Text = "Drawing info...";
-            this.drawingInfoToolStripMenuItem.Click += new System.EventHandler(this.drawingInfoToolStripMenuItem_Click);
-            // 
             // dxfReaderNETControl1
             // 
             this.dxfReaderNETControl1.AutoSize = true;
@@ -251,6 +251,7 @@
             rasterVariables1.Owner = null;
             rasterVariables1.Units = DXFReaderNET.ImageUnits.Unitless;
             dxfDocument1.RasterVariables = rasterVariables1;
+            dxfDocument1.SortentsTables = null;
             dxfDocument1.ThumbnailImage = null;
             dxfDocument1.TotalEditTime = new System.DateTime(2020, 4, 24, 0, 0, 0, 0);
             dxfDocument1.TotalEditTimeDays = 0;
@@ -258,8 +259,6 @@
             dxfDocument1.UserTimerDays = 0;
             this.dxfReaderNETControl1.DXF = dxfDocument1;
             this.dxfReaderNETControl1.FileName = null;
-            this.dxfReaderNETControl1.HighlightGrabPoints = false;
-            this.dxfReaderNETControl1.HighlightGrabPointsColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))));
             this.dxfReaderNETControl1.HighlightMarkerColor2 = System.Drawing.Color.Magenta;
             this.dxfReaderNETControl1.HighlightNotContinuous = false;
             this.dxfReaderNETControl1.Location = new System.Drawing.Point(-51, -94);
